@@ -54,6 +54,12 @@ class CustomDateRangePicker extends StatefulWidget {
   /// Text for apply button.
   final String applyButtonText;
 
+  /// Cancel button style.
+  final ButtonStyle? cancelButtonStyle;
+
+  /// Apply button style.
+  final ButtonStyle? applyButtonStyle;
+
   /// Text for From label.
   final String fromText;
 
@@ -74,6 +80,8 @@ class CustomDateRangePicker extends StatefulWidget {
     this.locale,
     this.cancelButtonText = 'Cancel',
     this.applyButtonText = 'Apply',
+    this.cancelButtonStyle,
+    this.applyButtonStyle,
     this.fromText = 'From',
     this.toText = 'To',
   }) : super(key: key);
@@ -167,8 +175,7 @@ class CustomDateRangePickerState extends State<CustomDateRangePicker>
                                 ),
                                 Text(
                                   startDate != null
-                                      ? dateFormat
-                                          .format(startDate!)
+                                      ? dateFormat.format(startDate!)
                                       : '--/-- ',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
@@ -202,8 +209,7 @@ class CustomDateRangePickerState extends State<CustomDateRangePicker>
                                 ),
                                 Text(
                                   endDate != null
-                                      ? dateFormat
-                                          .format(endDate!)
+                                      ? dateFormat.format(endDate!)
                                       : '--/-- ',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
@@ -247,18 +253,21 @@ class CustomDateRangePickerState extends State<CustomDateRangePicker>
                                       BorderRadius.all(Radius.circular(24.0)),
                                 ),
                                 child: OutlinedButton(
-                                  style: ButtonStyle(
-                                    side: WidgetStateProperty.all(
-                                        BorderSide(color: widget.primaryColor)),
-                                    shape: WidgetStateProperty.all(
-                                      const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(24.0)),
+                                  style: widget.cancelButtonStyle ??
+                                      ButtonStyle(
+                                        side: WidgetStateProperty.all(
+                                            BorderSide(
+                                                color: widget.primaryColor)),
+                                        shape: WidgetStateProperty.all(
+                                          const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(24.0)),
+                                          ),
+                                        ),
+                                        backgroundColor:
+                                            WidgetStateProperty.all(
+                                                widget.primaryColor),
                                       ),
-                                    ),
-                                    backgroundColor: WidgetStateProperty.all(
-                                        widget.primaryColor),
-                                  ),
                                   onPressed: () {
                                     try {
                                       widget.onCancelClick();
@@ -287,18 +296,21 @@ class CustomDateRangePickerState extends State<CustomDateRangePicker>
                                       BorderRadius.all(Radius.circular(24.0)),
                                 ),
                                 child: OutlinedButton(
-                                  style: ButtonStyle(
-                                    side: WidgetStateProperty.all(
-                                        BorderSide(color: widget.primaryColor)),
-                                    shape: WidgetStateProperty.all(
-                                      const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(24.0)),
+                                  style: widget.applyButtonStyle ??
+                                      ButtonStyle(
+                                        side: WidgetStateProperty.all(
+                                            BorderSide(
+                                                color: widget.primaryColor)),
+                                        shape: WidgetStateProperty.all(
+                                          const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(24.0)),
+                                          ),
+                                        ),
+                                        backgroundColor:
+                                            WidgetStateProperty.all(
+                                                widget.primaryColor),
                                       ),
-                                    ),
-                                    backgroundColor: WidgetStateProperty.all(
-                                        widget.primaryColor),
-                                  ),
                                   onPressed: () {
                                     try {
                                       widget.onApplyClick(startDate!, endDate!);
