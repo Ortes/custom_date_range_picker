@@ -267,6 +267,16 @@ class CustomDateRangePickerState extends State<CustomDateRangePicker>
                                         backgroundColor:
                                             WidgetStateProperty.all(
                                                 widget.primaryColor),
+                                        foregroundColor:
+                                            WidgetStateProperty.all(
+                                                Colors.white),
+                                        textStyle: WidgetStateProperty.all(
+                                          const TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 18,
+                                            color: Colors.white,
+                                          ),
+                                        ),
                                       ),
                                   onPressed: () {
                                     try {
@@ -275,14 +285,7 @@ class CustomDateRangePickerState extends State<CustomDateRangePicker>
                                     } catch (_) {}
                                   },
                                   child: Center(
-                                    child: Text(
-                                      widget.cancelButtonText,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 18,
-                                        color: Colors.white,
-                                      ),
-                                    ),
+                                    child: Text(widget.cancelButtonText),
                                   ),
                                 ),
                               ),
@@ -310,6 +313,16 @@ class CustomDateRangePickerState extends State<CustomDateRangePicker>
                                         backgroundColor:
                                             WidgetStateProperty.all(
                                                 widget.primaryColor),
+                                        foregroundColor:
+                                            WidgetStateProperty.all(
+                                                Colors.white),
+                                        textStyle: WidgetStateProperty.all(
+                                          const TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 18,
+                                            color: Colors.white,
+                                          ),
+                                        ),
                                       ),
                                   onPressed: () {
                                     try {
@@ -318,14 +331,7 @@ class CustomDateRangePickerState extends State<CustomDateRangePicker>
                                     } catch (_) {}
                                   },
                                   child: Center(
-                                    child: Text(
-                                      widget.applyButtonText,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 18,
-                                        color: Colors.white,
-                                      ),
-                                    ),
+                                    child: Text(widget.applyButtonText),
                                   ),
                                 ),
                               ),
