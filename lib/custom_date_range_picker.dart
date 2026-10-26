@@ -67,7 +67,7 @@ class CustomDateRangePicker extends StatefulWidget {
   final String toText;
 
   const CustomDateRangePicker({
-    Key? key,
+    super.key,
     this.initialStartDate,
     this.initialEndDate,
     required this.primaryColor,
@@ -84,14 +84,13 @@ class CustomDateRangePicker extends StatefulWidget {
     this.applyButtonStyle,
     this.fromText = 'From',
     this.toText = 'To',
-  }) : super(key: key);
+  });
 
   @override
   CustomDateRangePickerState createState() => CustomDateRangePickerState();
 }
 
-class CustomDateRangePickerState extends State<CustomDateRangePicker>
-    with TickerProviderStateMixin {
+class CustomDateRangePickerState extends State<CustomDateRangePicker> with TickerProviderStateMixin {
   AnimationController? animationController;
 
   DateTime? startDate;
@@ -100,8 +99,7 @@ class CustomDateRangePickerState extends State<CustomDateRangePicker>
 
   @override
   void initState() {
-    animationController = AnimationController(
-        duration: const Duration(milliseconds: 400), vsync: this);
+    animationController = AnimationController(duration: const Duration(milliseconds: 400), vsync: this);
     startDate = widget.initialStartDate;
     endDate = widget.initialEndDate;
     animationController?.forward();
@@ -140,10 +138,7 @@ class CustomDateRangePickerState extends State<CustomDateRangePicker>
                   color: widget.backgroundColor,
                   borderRadius: const BorderRadius.all(Radius.circular(24.0)),
                   boxShadow: <BoxShadow>[
-                    BoxShadow(
-                        color: Colors.grey.withOpacity(0.2),
-                        offset: const Offset(4, 4),
-                        blurRadius: 8.0),
+                    BoxShadow(color: Colors.grey.withValues(alpha: 0.2), offset: const Offset(4, 4), blurRadius: 8.0),
                   ],
                 ),
                 child: InkWell(
@@ -174,9 +169,7 @@ class CustomDateRangePickerState extends State<CustomDateRangePicker>
                                   height: 4,
                                 ),
                                 Text(
-                                  startDate != null
-                                      ? dateFormat.format(startDate!)
-                                      : '--/-- ',
+                                  startDate != null ? dateFormat.format(startDate!) : '--/-- ',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
@@ -208,9 +201,7 @@ class CustomDateRangePickerState extends State<CustomDateRangePicker>
                                   height: 4,
                                 ),
                                 Text(
-                                  endDate != null
-                                      ? dateFormat.format(endDate!)
-                                      : '--/-- ',
+                                  endDate != null ? dateFormat.format(endDate!) : '--/-- ',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
@@ -231,8 +222,7 @@ class CustomDateRangePickerState extends State<CustomDateRangePicker>
                         initialEndDate: widget.initialEndDate,
                         initialStartDate: widget.initialStartDate,
                         primaryColor: widget.primaryColor,
-                        startEndDateChange:
-                            (DateTime startDateData, DateTime endDateData) {
+                        startEndDateChange: (DateTime startDateData, DateTime endDateData) {
                           setState(() {
                             startDate = startDateData;
                             endDate = endDateData;
@@ -241,35 +231,26 @@ class CustomDateRangePickerState extends State<CustomDateRangePicker>
                         locale: locale,
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(
-                            left: 16, right: 16, bottom: 16, top: 8),
+                        padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16, top: 8),
                         child: Row(
                           children: [
                             Expanded(
                               child: Container(
                                 height: 48,
                                 decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(24.0)),
+                                  borderRadius: BorderRadius.all(Radius.circular(24.0)),
                                 ),
                                 child: OutlinedButton(
                                   style: widget.cancelButtonStyle ??
                                       ButtonStyle(
-                                        side: WidgetStateProperty.all(
-                                            BorderSide(
-                                                color: widget.primaryColor)),
+                                        side: WidgetStateProperty.all(BorderSide(color: widget.primaryColor)),
                                         shape: WidgetStateProperty.all(
                                           const RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(24.0)),
+                                            borderRadius: BorderRadius.all(Radius.circular(24.0)),
                                           ),
                                         ),
-                                        backgroundColor:
-                                            WidgetStateProperty.all(
-                                                widget.primaryColor),
-                                        foregroundColor:
-                                            WidgetStateProperty.all(
-                                                Colors.white),
+                                        backgroundColor: WidgetStateProperty.all(widget.primaryColor),
+                                        foregroundColor: WidgetStateProperty.all(Colors.white),
                                         textStyle: WidgetStateProperty.all(
                                           const TextStyle(
                                             fontWeight: FontWeight.w500,
@@ -295,27 +276,19 @@ class CustomDateRangePickerState extends State<CustomDateRangePicker>
                               child: Container(
                                 height: 48,
                                 decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(24.0)),
+                                  borderRadius: BorderRadius.all(Radius.circular(24.0)),
                                 ),
                                 child: OutlinedButton(
                                   style: widget.applyButtonStyle ??
                                       ButtonStyle(
-                                        side: WidgetStateProperty.all(
-                                            BorderSide(
-                                                color: widget.primaryColor)),
+                                        side: WidgetStateProperty.all(BorderSide(color: widget.primaryColor)),
                                         shape: WidgetStateProperty.all(
                                           const RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(24.0)),
+                                            borderRadius: BorderRadius.all(Radius.circular(24.0)),
                                           ),
                                         ),
-                                        backgroundColor:
-                                            WidgetStateProperty.all(
-                                                widget.primaryColor),
-                                        foregroundColor:
-                                            WidgetStateProperty.all(
-                                                Colors.white),
+                                        backgroundColor: WidgetStateProperty.all(widget.primaryColor),
+                                        foregroundColor: WidgetStateProperty.all(Colors.white),
                                         textStyle: WidgetStateProperty.all(
                                           const TextStyle(
                                             fontWeight: FontWeight.w500,
